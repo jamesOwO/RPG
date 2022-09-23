@@ -23,7 +23,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine("Your friend James runs up to you\nJames - 'OMG, i heard what happened are you ok? What are you going to do about the people that took over " +
                 "your animal fighting business?'\nYou - 'I will have to get it back then'\nJames takes you and {0} back to his appartment till the morning", squirrel);
             Console.Clear();
-
+            Co
         }
     }
 }
