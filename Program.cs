@@ -31,7 +31,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
             int invteddy = 0;
             int invbandage = 0;
             int invmed = 0;
-            
+            string shopitem = "";
+            int itemprice = 0;
 
             //introduction
 
@@ -59,7 +60,54 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 if (visitshop == "1")
                 {
                     Console.WriteLine("You decided to visit the shop");
+                    Thread.Sleep(2500);
+                    Console.Clear();
+                    bool leaveshop = false;
+                    while (leaveshop == false)
+                    {
+                        Console.WriteLine("What do you want to buy? \n 1 - medkit - 250G \n 2 - bandage - 50G \n 3 - drugs - 250G \n 4 - teddy 50G \n 5 - leave");
+                        string shopchoice = Console.ReadLine();
+                        if (shopchoice == "1")
+                        {
+                            shopitem = "medkit";
+                            itemprice = 250;
+                        }
+                        if (shopchoice == "2")
+                        {
+                            shopitem = "bandage";
+                            itemprice = 50;
+                        }
+                        if (shopchoice == "3")
+                        {
+                            shopitem = "drugs";
+                            itemprice = 250;
+                        }
+                        if (shopchoice == "4")
+                        {
+                            shopitem = "teddy";
+                            itemprice = 50;
+                        }
+                        if (shopchoice == "5")
+                        {
+                            break;
+                        }
 
+                        Console.WriteLine("Are you sure you want to buy this \n 1 - yes \n 2 - no");
+                        string shopconfirmation = Console.ReadLine();
+                        if (shopconfirmation == "1")
+                        {
+                            gold = gold - itemprice;
+                            Console.WriteLine("You bought a {0} for {1} gold \nYou have {2} gold left", shopitem, itemprice, gold);
+                        }
+
+                    }
+
+                }
+                else if (visitshop == "2")
+                {
+                    Console.WriteLine("You decided not to visit the shop");
+                    Thread.Sleep(2500);
+                    Console.Clear();
                 }
 
 
