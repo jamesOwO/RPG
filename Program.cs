@@ -8,53 +8,59 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
+
+            Random ranumber = new Random();
+            int movebuff;
+            int squirrellevel = 1;
+            string name;
+            string winneris = "";
+            string squirrel;
+            int squirrelmaxhp = 100;
+            string move = "";
+            string secondarymove;
+            bool myblock = false;
+            bool squirrelbleed = false;
+            double squirreldamage = 1;
+            double squirreldefence = 1;
+            int speed = 1;
+            bool winner = false;
+            double damage;
+            bool movevalid = false;
+
+            //introduction
+
+            Console.WriteLine("Welcome to... \nWhat is your name?");
+            name = Console.ReadLine();
+            Console.WriteLine("Hello {0}\nPress enter to begin", name);
+            Console.ReadLine();
+            Console.Clear();
+            Thread.Sleep(2000);
+            Console.WriteLine("You look up from the ground \nYou're laying on a pile of boxes in a familiar looking alleyway with what looks like your squirrel companion " +
+                "asleep on your lap.\nWhat is their name?");
+            squirrel = Console.ReadLine();
+            Console.WriteLine("Your friend James runs up to you\nJames - 'OMG, i heard what happened are you ok? What are you going to do about the people that took over " +
+                "your animal fighting business?'\nYou - 'I will have to get it back then'\nJames takes you and {0} back to his appartment till the morning", squirrel);
+            Thread.Sleep(10000);
+            Console.Clear();
+            Console.WriteLine("In the morning you notice theres a note from James on the table which reads 'Hey {0}, I need to go out of the city for a while, you can use my " +
+                "appartment for as long as you need'", name);
+
             bool gamefinish = false;
             while (gamefinish == false)
             {
-                Random ranumber = new Random();
-                int movebuff;
-                int squirrellevel = 1;
-                string name;
-                string winneris = "";
-                string squirrel;
-                int squirrelmaxhp = 100;
-                int squirrelhp = 100;
-                string move;
-                string secondarymove;
-                bool myblock = false;
-                bool squirrelbleed = false;
-                Double damage = 1;
-                Double defence = 1;
-                int speed = 1;
-                bool winner = false;
-
-                //introduction
-
-                Console.WriteLine("Welcome to... \nWhat is your name?");
-                name = Console.ReadLine();
-                Console.WriteLine("Hello {0}\nPress enter to begin", name);
-                Console.ReadLine();
-                Console.Clear();
-                Thread.Sleep(2000);
-                Console.WriteLine("You look up from the ground \nYou're laying on a pile of boxes in a familiar looking alleyway with what looks like your squirrel companion " +
-                    "asleep on your lap.\nWhat is their name?");
-                squirrel = Console.ReadLine();
-                Console.WriteLine("Your friend James runs up to you\nJames - 'OMG, i heard what happened are you ok? What are you going to do about the people that took over " +
-                    "your animal fighting business?'\nYou - 'I will have to get it back then'\nJames takes you and {0} back to his appartment till the morning", squirrel);
-                Thread.Sleep(10000);
-                Console.Clear();
-                Console.WriteLine("In the morning you notice theres a note from James on the table which reads 'Hey {0}, I need to go out of the city for a while, you can use my " +
-                    "appartment for as long as you need'", name);
-
                 //first fight
-                int enemyspeed = 2;
+                int enemyspeed = 1;
                 double enemydamage = 1;
                 double enemydefence = 1;
                 string enemyname1 = "daniel";
                 string enemy1 = "cat";
                 bool enemyblock = false;
                 bool enemybleed = false;
-                int enemyhp = 100;
+                double enemyhp = 100;
+                bool teddyactive = false;
+                int test;
+
+                double squirrelhp = squirrelmaxhp;
                 //your move
 
                 while (winner == false)
@@ -62,9 +68,33 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     int speedcount = speed;
                     do
                     {
-                        Console.WriteLine("\nWhat do you want {0} to do? \n 1 - attack \n 2 - special \n 3 - distract \n 4 - use item", squirrel);
-                        move = Console.ReadLine();
-                        if (move == "1")
+                        while (movevalid == false)
+                        {
+                            Console.WriteLine("\nIt's your turn \nWhat do you want {0} to do? \n 1 - attack \n 2 - special \n 3 - distract \n 4 - use item", squirrel);
+                            move = Console.ReadLine();
+                            test = Convert.ToInt32(move);
+                            if (test == 1)
+                            {
+                                movevalid = true;
+                            }
+                            else if (test == 2)
+                            {
+                                movevalid = true;
+                            }
+                            else if (test == 3)
+                            {
+                                movevalid = true;
+                            }
+                            else if (test == 3)
+                            {
+                                movevalid = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine(" - Invalid input - ");
+                            }
+                        }
+                        if (move == "3")
                         {
                             enemyhp = enemyhp - 20;
                             Console.WriteLine("you dealt 20 damage to {0} \n{0} has {1} health left", enemy1, enemyhp);
@@ -77,7 +107,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                         }
                         else if (move == "3")
                         {
-                            myblock = true;
+                            teddyactive = true;
                             Console.WriteLine("You used a teddy to replace your animal");
                         }
                         else if (move == "4")
@@ -110,31 +140,30 @@ namespace MyApp // Note: actual namespace depends on the project name.
                                 int mybuff = ranumber.Next(1, 4);
                                 if (mybuff == 1)
                                 {
-                                    damage = damage + 0.5;
+                                    squirreldamage = squirreldamage + 0.5;
                                     Console.WriteLine("{0}'s damage was increased", squirrel);
                                 }
                                 else if (mybuff == 2)
                                 {
-                                    defence = defence + 0.5;
+                                    squirreldefence = squirreldefence + 0.5;
                                     Console.WriteLine("{0}'s defence was increased", squirrel);
                                 }
                                 else if (mybuff == 3)
                                 {
                                     speed = speed + 1;
-                                    speedcount = speedcount + 1;
                                     Console.WriteLine("{0}'s speed was increased", squirrel);
                                 }
                             }
-                            if (squirrelhp < 1)
-                            {
-                                winner = true;
-                                winneris = enemy1;
-                            }
-                            else if (enemyhp < 1)
-                            {
-                                winner = true;
-                                winneris = name;
-                            }
+                        }
+                        if (squirrelhp < 1)
+                        {
+                            winner = true;
+                            winneris = enemyname1;
+                        }
+                        else if (enemyhp < 1)
+                        {
+                            winner = true;
+                            winneris = name;
                         }
                         speedcount--;
                         if (winner == true)
@@ -150,6 +179,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                         int enemyspeedcount = enemyspeed;
                         do
                         {
+                            Console.WriteLine("\nIt's {0}'s turn \n", enemyname1);
                             int enemymove = ranumber.Next(1, 4);
                             if (enemymove == 1)
                             {
@@ -157,24 +187,32 @@ namespace MyApp // Note: actual namespace depends on the project name.
                                 if (enemybuff == 1)
                                 {
                                     enemydamage = enemydamage + 0.5;
-                                    Console.WriteLine("{0}'s damage was increased", squirrel);
+                                    Console.WriteLine("{0}'s damage was increased", enemy1);
                                 }
                                 else if (enemybuff == 2)
                                 {
                                     enemydefence = enemydefence + 0.5;
-                                    Console.WriteLine("{0}'s defence was increased", squirrel);
+                                    Console.WriteLine("{0}'s defence was increased", enemy1);
                                 }
                                 else if (enemybuff == 3)
                                 {
                                     enemyspeed = enemyspeed + 1;
-                                    enemyspeedcount = enemyspeedcount + 1;
-                                    Console.WriteLine("{0}'s speed was increased", squirrel);
+                                    Console.WriteLine("{0}'s speed was increased", enemy1);
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("{0} attacked {1} \n{0} dealt 20 damage", enemy1, squirrel);
-                                squirrelhp = squirrelhp - 20;
+                                if (teddyactive == false)
+                                {
+                                    damage = 20 * enemydamage / squirreldefence;
+                                    Console.WriteLine("{0} attacked {1} \n{0} dealt {2} damage", enemy1, squirrel, damage);
+                                    squirrelhp = squirrelhp - damage;
+                                }
+                                else if (teddyactive == true)
+                                {
+                                    Console.WriteLine("{0} attacked the teddy and destroyed it");
+                                    teddyactive = false;
+                                }
                             }
                             if (squirrelhp < 1)
                             {
@@ -192,7 +230,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                             {
                                 Console.WriteLine("{0} has {1} health left", squirrel, squirrelhp);
                             }
-                            speedcount = speedcount - 1;
+                            enemyspeedcount = enemyspeedcount - 1;
                         }
                         while (enemyspeedcount > 0);
                     }
@@ -215,7 +253,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     {
                         break;
                     }
-                
+
+
+
+                gamefinish = true;
                 }
             }
         }
