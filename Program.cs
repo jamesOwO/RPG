@@ -33,6 +33,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             int invmed = 0;
             string shopitem = "";
             int itemprice = 0;
+            int fight = 1;
 
             //introduction
 
@@ -123,13 +124,21 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     double enemydefence = 1;
                     string enemyname1 = "daniel";
                     string enemy1 = "cat";
+
                     double enemybleed = 0;
                     double enemyhp = 100;
                     bool teddyactive = false;
                     int test;
                     double enemyattack = 20;
                     double squirrelhp = squirrelmaxhp;
+                    if (fight == 1)
+                    {
+                        string enemyname1 = "daniel";
+                        string enemy1 = "cat";
+                        double enemyhp = 100;
+                        double enemyattack = 20;
 
+                    }
                     while (winner == false)
                     {
 
@@ -267,7 +276,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                             do
                             {
                                 Console.WriteLine("\nIt's {0}'s turn \n", enemyname1);
-                                int enemymove = ranumber.Next(1, 4);
+                                int enemymove = ranumber.Next(1, 10);
                                 if (enemymove == 1)
                                 {
                                     int enemybuff = ranumber.Next(1, 4);
